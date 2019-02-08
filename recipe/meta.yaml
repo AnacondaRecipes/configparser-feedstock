@@ -7,10 +7,12 @@ package:
 source:
   url: https://pypi.io/packages/source/c/configparser/configparser-{{ version }}.tar.gz
   sha256: 5bd5fa2a491dc3cfe920a3f2a107510d65eceae10e9c6e547b90261a4710df32
+  patches:
+    - 0001-remove-unicode-from-setup.cfg.patch
 
 build:
   number: 0
-  skip: True  # [win and py>34]
+  skip: True  # [py>34]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:

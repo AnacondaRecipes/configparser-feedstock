@@ -1,0 +1,32 @@
+From 4a3cc555902a9e24401282120673b825ebdcc995 Mon Sep 17 00:00:00 2001
+From: Jonathan Helmus <jjhelmus@gmail.com>
+Date: Fri, 8 Feb 2019 11:49:18 -0600
+Subject: [PATCH] remove unicode from setup.cfg
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Unicode in the setup.cfg file cannot be parsed correctly by setuptools on
+Windows for certain code pages.  Remove for compatibility.
+
+Sorry Łukasz
+---
+ setup.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index 48f2d07..2136748 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -3,7 +3,7 @@ name = configparser
+ version = 3.7.1
+ long_description = file:README.rst
+ description = Updated configparser from Python 3.7 for Python 2.6+.
+-author = Łukasz Langa
++author = Lukasz Langa
+ author_email = lukasz@langa.pl
+ maintainer = Jason R. Coombs
+ maintainer_email = jaraco@jaraco.com
+-- 
+2.7.4
+
