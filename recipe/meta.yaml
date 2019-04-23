@@ -7,6 +7,10 @@ package:
 source:
   url: https://pypi.io/packages/source/c/configparser/configparser-{{ version }}.tar.gz
   sha256: 2ca44140ee259b5e3d8aaf47c79c36a7ab0d5e94d70bd4105c03ede7a20ea5a1
+  patches:
+    # only needed on Windows + 3.x. Pip uses distutils to load the
+    # configuration and defaults to cp1252 encoding
+    - 0001-use-ascii-in-setup.cfg.patch
 
 build:
   number: 0
