@@ -10,17 +10,18 @@ source:
   sha256: b629cc8ae916e3afbd36d1b3d093f34193d851e11998920fdcfc4552218b7b70
 
 build:
+  skip: true  # [py<39]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - setuptools_scm >=3.4.1
     - toml
   run:
-    - python >=3.6
+    - python
 
 test:
   requires:
