@@ -33,6 +33,7 @@ test:
     - configparser
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
   home: http://docs.python.org/3/library/configparser.html
