@@ -1,11 +1,12 @@
+{% set name = "configparser" %}
 {% set version = "7.2.0" %}
 
 package:
-  name: configparser
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/configparser/configparser-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b629cc8ae916e3afbd36d1b3d093f34193d851e11998920fdcfc4552218b7b70
 
 build:
