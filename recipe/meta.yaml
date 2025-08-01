@@ -41,16 +41,16 @@ test:
     - pytest -vv --import-mode=importlib tests
 
 about:
-  home: http://docs.python.org/3/library/configparser.html
+  home: https://github.com/jaraco/configparser
   license: MIT
   license_file: LICENSE
-  summary: Updated configparser from Python 3.8 for Python 2.6+.
+  summary: Updated configparser from stdlib for earlier Pythons.
   description: |
       This module provides the ConfigParser class which implements a basic
       configuration language which provides a structure similar to what's
       found in Microsoft Windows INI files.
+  dev_url: https://github.com/jaraco/configparser
   doc_url: https://docs.python.org/3/library/configparser.html
-  doc_source_url: https://github.com/python/cpython/blob/3.6/Doc/library/configparser.rst
 
 extra:
   recipe-maintainers:
