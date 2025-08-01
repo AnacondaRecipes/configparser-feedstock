@@ -25,15 +25,20 @@ requirements:
     - python
 
 test:
-  requires:
-    - pip
+  source_files:
+    - tests
   imports:
     - backports
     - backports.configparser
     - configparser
+  requires:
+    - python
+    - pip
+    - pytest >=6,!= 8.1.*
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv --import-mode=importlib tests
 
 about:
   home: http://docs.python.org/3/library/configparser.html
