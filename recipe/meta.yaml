@@ -20,6 +20,7 @@ requirements:
     - pip
     - setuptools >=61.2
     - setuptools_scm >=3.4.1
+    - wheel
     - toml
   run:
     - python
@@ -43,6 +44,7 @@ test:
 about:
   home: https://github.com/jaraco/configparser
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Updated configparser from stdlib for earlier Pythons.
   description: |
