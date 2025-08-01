@@ -1,48 +1,58 @@
-{% set version = "5.0.2" %}
+{% set name = "configparser" %}
+{% set version = "7.2.0" %}
 
 package:
-  name: configparser
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/configparser/configparser-{{ version }}.tar.gz
-  sha256: 85d5de102cfe6d14a5172676f09d19c465ce63d6019cf0a4ef13385fc535e828
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b629cc8ae916e3afbd36d1b3d093f34193d851e11998920fdcfc4552218b7b70
 
 build:
+  skip: true  # [py<39]
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - setuptools >=61.2
     - setuptools_scm >=3.4.1
+    - wheel
     - toml
   run:
-    - python >=3.6
+    - python
 
 test:
-  requires:
-    - pip
+  source_files:
+    - tests
   imports:
     - backports
     - backports.configparser
     - configparser
+  requires:
+    - python
+    - pip
+    - pytest >=6,!=8.1.*
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv --import-mode=importlib tests
 
 about:
-  home: http://docs.python.org/3/library/configparser.html
+  home: https://github.com/jaraco/configparser
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Updated configparser from Python 3.8 for Python 2.6+.
+  summary: Updated configparser from stdlib for earlier Pythons.
   description: |
       This module provides the ConfigParser class which implements a basic
       configuration language which provides a structure similar to what's
       found in Microsoft Windows INI files.
+  dev_url: https://github.com/jaraco/configparser
   doc_url: https://docs.python.org/3/library/configparser.html
-  doc_source_url: https://github.com/python/cpython/blob/3.6/Doc/library/configparser.rst
 
 extra:
   recipe-maintainers:
