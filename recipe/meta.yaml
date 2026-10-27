@@ -1,16 +1,16 @@
 {% set name = "configparser" %}
-{% set version = "7.2.0" %}
+{% set version = "7.3.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b629cc8ae916e3afbd36d1b3d093f34193d851e11998920fdcfc4552218b7b70
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 2e148379c75806e4ab879bea6245774c65b6206236f4b3d74d8231cb1c46c741
 
 build:
-  skip: true  # [py<39]
+  skip: true  # [py<311]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
@@ -18,12 +18,16 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=61.2
+    - setuptools >=77
     - setuptools_scm >=3.4.1
-    - wheel
     - toml
+    - setuptools-scm >=3.4.1
+    - coherent.licensed
   run:
     - python
+  run_constrained:
+    - pytest-checkdocs >=2.14
+    - pytest-enabler >=3.4
 
 test:
   source_files:
@@ -48,9 +52,9 @@ about:
   license_file: LICENSE
   summary: Updated configparser from stdlib for earlier Pythons.
   description: |
-      This module provides the ConfigParser class which implements a basic
-      configuration language which provides a structure similar to what's
-      found in Microsoft Windows INI files.
+    This module provides the ConfigParser class which implements a basic
+    configuration language which provides a structure similar to what's
+    found in Microsoft Windows INI files.
   dev_url: https://github.com/jaraco/configparser
   doc_url: https://docs.python.org/3/library/configparser.html
 
